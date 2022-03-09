@@ -105,14 +105,14 @@ var removeKdigits = function(num, k) {
  */
 var find132pattern = function(nums) {
     const stack = []
-    // 存放132模式中的次大者
-    let maxK = -Number.MAX_SAFE_INTEGER
+    let maxK = -Number.MAX_SAFE_INTEGER // 存放132模式中的次大值
     for (let i = nums.length-1; i >= 0; i--){
-        // 单调栈情况下找到了次大者，再找到比次大者小的元素则满足了132模式
+        // 单调栈情况下找到了次大值，再找到比次大值小的元素则满足了132模式
         if (nums[i] < maxK){
             return true
         }
         // 如果栈中有值，并且栈顶的值还小于当前元素
+        // 此时，有了nums[j](nums[i]值) & nums[k](栈顶值)
         // 只要栈顶比当前元素小就出栈，保证了栈内元素是升序的，栈顶是【栈中】最大值
         while(stack.length > 0 && nums[i] > stack[stack.length-1]){
             // 保存次大值
